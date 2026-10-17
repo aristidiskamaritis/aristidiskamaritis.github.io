@@ -124,14 +124,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .header-inner { height: 100%; display: flex; align-items: center; gap: 24px; }
 
 .logo { display: inline-flex; align-items: center; gap: 12px; flex: none; }
-.logo-mark {
-  display: grid; place-items: center;
-  width: 36px; height: 36px; border-radius: 8px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font: 700 .92rem/1 var(--sans);
-  letter-spacing: .02em;
-}
+.logo-mark { display: block; flex: none; width: 36px; height: 36px; }
 .logo-text { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; }
 
 .main-nav { margin-inline: auto; }
