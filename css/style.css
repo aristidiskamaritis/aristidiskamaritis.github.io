@@ -124,8 +124,10 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .header-inner { height: 100%; display: flex; align-items: center; gap: 24px; }
 
 .logo { display: inline-flex; align-items: center; gap: 12px; flex: none; }
-.logo-mark { display: block; flex: none; width: 36px; height: 36px; }
-.logo-text { font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; }
+.logo-mark { display: block; flex: none; width: 38px; height: 38px; color: var(--text); transition: transform .35s var(--ease); }
+.logo:hover .logo-mark { transform: scale(1.06) rotate(-4deg); }
+.logo-text { display: grid; font-size: 1.12rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.1; }
+.logo-text small { font-size: .56rem; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--muted); margin-top: .3rem; }
 
 .main-nav { margin-inline: auto; }
 .main-nav ul { display: flex; gap: 4px; }
@@ -737,6 +739,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   .hero-facts { display: grid; gap: 10px; font-size: .88rem; }
   .lang-switch button { min-width: 34px; padding: 0 8px; }
   .logo-text { font-size: 1rem; line-height: 1.12; max-width: 6.5em; }
+  .logo-text small { display: none; }
   .logo { gap: 10px; }
   .svc-grid, .promises, .steps { grid-template-columns: 1fr; }
   .svc-num { margin-bottom: 24px; }
