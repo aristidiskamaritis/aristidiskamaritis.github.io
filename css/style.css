@@ -438,6 +438,22 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .finder-links { display: flex; justify-content: space-between; gap: 16px; }
 .finder-links .finder-back { margin-top: 12px; }
 
+/* Contact fallback panel (reuses the plan finder dialog frame) */
+.reach { width: min(460px, calc(100% - 32px)); }
+.reach-title { font-size: clamp(1.3rem, 3.2vw, 1.55rem); line-height: 1.25; margin-bottom: 10px; }
+.reach-text { color: var(--muted); font-size: .95rem; margin-bottom: 20px; }
+.reach-copy {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 10px 10px 16px; margin-bottom: 16px; border-radius: var(--r);
+  background: var(--bg); border: 1px solid var(--line-2);
+}
+.reach-value { font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; user-select: all; }
+.reach-copy .btn { flex: none; }
+.reach-actions { display: grid; gap: 10px; }
+.reach-actions .btn { width: 100%; }
+.reach-small { justify-self: center; margin-top: 4px; font-size: .88rem; color: var(--muted); border-bottom: 1px solid var(--line-2); }
+.reach-small:hover { color: var(--accent); border-color: var(--accent); }
+
 .included { margin-top: 30px; padding: 0 4px; }
 .included-title { margin-bottom: 14px; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #0B7A93; }
 .included ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px 24px; font-size: .92rem; }
