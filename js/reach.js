@@ -1,10 +1,10 @@
 /* ==========================================================================
    Contact buttons that always lead somewhere.
-   Viber, phone and email links open an app on the visitor's device. When no
-   app answers (no Viber installed, no mail app, a computer that can't call),
-   the click would do nothing, so we watch for the page losing focus and, if
-   it doesn't, offer working alternatives: Gmail/Outlook on the web, copy the
-   number or address, or switch to WhatsApp.
+   On phones, Viber, Call and Email open the app directly; if nothing takes
+   over the screen, a panel offers alternatives (copy, WhatsApp, Gmail…).
+   On computers those apps are often missing or half set up (Windows opens a
+   sign-in or "choose an app" box), so the panel opens straight away there,
+   with web email, copy buttons and an option to try the app anyway.
    ========================================================================== */
 (function () {
   "use strict";
@@ -22,11 +22,14 @@
       copy: "Copy",
       copied: "Copied",
       emailTitle: "Send me an email",
-      emailText: "If no email app opened, write to me from your browser or copy my address.",
+      emailText: "Write to me from your browser, or copy my address.",
+      mailApp: "Use my email app",
       gmail: "Open in Gmail",
       outlook: "Open in Outlook",
       viberTitle: "Message me on Viber",
       viberText: "Viber didn't open? It needs the Viber app on this device. You can also save my number in Viber, or message me on WhatsApp instead.",
+      viberDesk: "Message me on Viber from your phone using this number, or open Viber Desktop if you have it.",
+      openViber: "Open Viber Desktop",
       getViber: "Get Viber",
       phoneTitle: "Call me",
       phoneText: "Call this number from your phone, or message me on WhatsApp or Viber.",
@@ -42,11 +45,14 @@
       copy: "Αντιγραφή",
       copied: "Αντιγράφηκε",
       emailTitle: "Στείλτε μου email",
-      emailText: "Αν δεν άνοιξε εφαρμογή email, γράψτε μου από τον browser ή αντιγράψτε τη διεύθυνσή μου.",
+      emailText: "Γράψτε μου από τον browser ή αντιγράψτε τη διεύθυνσή μου.",
+      mailApp: "Με την εφαρμογή email μου",
       gmail: "Άνοιγμα στο Gmail",
       outlook: "Άνοιγμα στο Outlook",
       viberTitle: "Στείλτε μου στο Viber",
       viberText: "Δεν άνοιξε το Viber; Χρειάζεται η εφαρμογή Viber σε αυτή τη συσκευή. Μπορείτε επίσης να αποθηκεύσετε τον αριθμό μου στο Viber ή να μου στείλετε στο WhatsApp.",
+      viberDesk: "Στείλτε μου στο Viber από το κινητό σας με αυτόν τον αριθμό ή ανοίξτε το Viber Desktop αν το έχετε.",
+      openViber: "Άνοιγμα Viber Desktop",
       getViber: "Λήψη Viber",
       phoneTitle: "Τηλεφωνήστε μου",
       phoneText: "Καλέστε αυτόν τον αριθμό από το κινητό σας ή στείλτε μου μήνυμα στο WhatsApp ή στο Viber.",
@@ -86,8 +92,9 @@
       "&subject=" + encodeURIComponent(p.subject) + "&body=" + encodeURIComponent(p.body);
   }
 
-  // A computer with a mouse usually has nothing that can place a phone call
-  var canCall = window.matchMedia("(pointer: coarse)").matches;
+  // Phones and tablets (touch screen) have the dialer, mail and Viber apps;
+  // computers with a mouse often don't, or Windows only offers to set one up
+  var isPhone = window.matchMedia("(pointer: coarse)").matches;
 
   /* ---------- The fallback panel ---------- */
   function link(label, href, primary, newTab) {
@@ -95,6 +102,14 @@
     a.href = href;
     if (newTab) { a.target = "_blank"; a.rel = "noopener"; }
     a.addEventListener("click", function () { if (newTab) dialog.close(); });
+    return a;
+  }
+
+  // Small "try the app anyway" link; it closes the panel so nothing re-opens it
+  function small(label, href) {
+    var a = el("a", "reach-small reach-app", label);
+    a.href = href;
+    a.addEventListener("click", function () { dialog.close(); });
     return a;
   }
 
@@ -125,17 +140,18 @@
       title = tx("emailTitle"); text = tx("emailText"); value = SITE.email;
       actions.appendChild(link(tx("gmail"), gmailUrl(), true, true));
       actions.appendChild(link(tx("outlook"), outlookUrl(), false, true));
+      if (!isPhone) actions.appendChild(small(tx("mailApp"), mailtoUrl()));
     } else if (kind === "viber") {
-      title = tx("viberTitle"); text = tx("viberText"); value = SITE.phoneDisplay;
+      title = tx("viberTitle"); value = SITE.phoneDisplay;
+      text = isPhone ? tx("viberText") : tx("viberDesk");
       actions.appendChild(link(tx("whatsapp"), waUrl(), true, true));
-      actions.appendChild(link(tx("getViber"), "https://www.viber.com/download/", false, true));
+      if (isPhone) actions.appendChild(link(tx("getViber"), "https://www.viber.com/download/", false, true));
+      else actions.appendChild(small(tx("openViber"), viberUrl()));
     } else {
       title = tx("phoneTitle"); text = tx("phoneText"); value = SITE.phoneDisplay;
       actions.appendChild(link(tx("whatsappShort"), waUrl(), true, true));
       actions.appendChild(link(tx("viber"), viberUrl(), false, false));
-      var call = el("a", "reach-small", tx("callApp"));
-      call.href = "tel:+" + digits;
-      actions.appendChild(call);
+      actions.appendChild(small(tx("callApp"), "tel:+" + digits));
     }
     var h = el("h2", "reach-title", title);
     h.id = "reach-title";
@@ -158,8 +174,8 @@
     var a = e.target.closest && e.target.closest('a[data-cfg-href="viber"], a[data-cfg-href="phone"], a[data-cfg-href="email"]');
     if (!a) return;
     var kind = a.getAttribute("data-cfg-href");
+    if (!isPhone) { e.preventDefault(); open(kind); return; }
     if (kind === "email") a.href = mailtoUrl(); // pre-filled subject and greeting
-    if (kind === "phone" && !canCall) { e.preventDefault(); open("phone"); return; }
     appOpened();
     pending = setTimeout(function () {
       pending = null;
