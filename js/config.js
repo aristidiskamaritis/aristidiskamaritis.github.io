@@ -11,8 +11,8 @@ window.SITE = {
   phoneDisplay: "+357 96 272170",
 
   // Live demo sites
-  demoOlive: "https://aristidiskamaritis.github.io/olive-and-oat/",
-  demoForge: "https://aristidiskamaritis.github.io/forge-athletic/",
+  demoOlive: "https://akwebdev.com/olive-and-oat/",
+  demoForge: "https://akwebdev.com/forge-athletic/",
 
   // Pre-filled WhatsApp message
   waText: {
