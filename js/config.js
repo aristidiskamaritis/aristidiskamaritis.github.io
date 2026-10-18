@@ -14,6 +14,10 @@ window.SITE = {
   demoOlive: "https://akwebdev.com/olive-and-oat/",
   demoForge: "https://akwebdev.com/forge-athletic/",
 
+  // Your Google Business Profile review link ("Ask for reviews" on the profile).
+  // Leave empty to hide the "Or review me on Google" link.
+  googleReview: "",
+
   // Pre-filled WhatsApp message
   waText: {
     en: "Hi Aristeidis! I'd like to talk about a website for my business.",
