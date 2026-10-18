@@ -481,6 +481,8 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 .care-tier { display: grid; gap: 10px; align-content: start; padding: 20px 22px; border-radius: var(--r); background: var(--cream); border: 1px solid rgba(15, 23, 32, .08); }
 .care-tier-plus { border-color: rgba(11, 122, 147, .45); box-shadow: inset 0 0 0 1px rgba(11, 122, 147, .2); }
+.care-tier-wide { grid-column: span 2; }
+.care-tier-wide .care-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 24px; }
 .care-name { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #0B7A93; }
 .care-price { display: flex; align-items: baseline; gap: 6px; }
 .care-price strong { font: 700 2rem/1 var(--sans); letter-spacing: -.02em; }
@@ -780,6 +782,8 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   .steps { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
   .plans { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
   .care { max-width: 520px; margin-inline: auto; grid-template-columns: 1fr; }
+  .care-tier-wide { grid-column: auto; }
+  .care-tier-wide .care-list { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   .about-photo { max-width: 420px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
