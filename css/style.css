@@ -711,8 +711,8 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .quick-btn {
   display: inline-flex; align-items: center; gap: 10px;
   height: 52px; padding: 0 20px 0 16px; border-radius: 8px; border: 0; cursor: pointer;
-  background: var(--wa); color: #06210F; font-weight: 600; font-size: .94rem;
-  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .6);
+  background: #FFFFFF; color: var(--ink); font-weight: 600; font-size: .94rem;
+  box-shadow: 0 0 0 1px rgba(15, 23, 32, .08), 0 10px 24px -12px rgba(0, 0, 0, .6);
   transition: transform .25s var(--ease);
 }
 .quick-btn .ico { font-size: 1.35rem; }
