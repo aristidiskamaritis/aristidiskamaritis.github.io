@@ -429,6 +429,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .finder-why { padding: 18px 20px; border-radius: var(--r); background: var(--bg); border: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
 .finder-why-t { margin-bottom: 4px; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text); }
 .finder-note { margin-top: 14px; font-size: .9rem; color: #F2C77B; }
+.finder-addon { margin-top: 14px; font-size: .9rem; color: var(--accent); }
 .finder-actions { margin-top: 24px; }
 .finder-links { display: flex; justify-content: space-between; gap: 16px; }
 .finder-links .finder-back { margin-top: 12px; }
@@ -493,6 +494,20 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 7px;
   border-left: 1.6px solid #0B7A93; border-bottom: 1.6px solid #0B7A93; transform: rotate(-45deg) scale(.8); transform-origin: left top;
 }
+
+/* Add-ons (online ordering, photo & logo pack) */
+.addon { position: relative; }
+.addon-flag {
+  position: absolute; top: 16px; right: 16px;
+  padding: 3px 9px; border-radius: 7px; background: #0B7A93; color: #FFFFFF;
+  font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+}
+.addon .care-price small { margin-right: 2px; }
+.addon-desc { color: var(--ink-muted); font-size: .9rem; }
+.addon-note { padding-top: 10px; border-top: 1px solid rgba(15, 23, 32, .1); color: var(--ink-muted); font-size: .84rem; }
+.addon-link { justify-self: start; display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; color: #0B7A93; border-bottom: 1px solid rgba(11, 122, 147, .35); transition: border-color .2s; }
+.addon-link:hover { border-color: #0B7A93; }
+.addon-link .ico { width: 14px; height: 14px; }
 
 /* ---------- Reviews ---------- */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

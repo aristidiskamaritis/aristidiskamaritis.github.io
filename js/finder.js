@@ -2,7 +2,8 @@
    Plan finder: a short quiz that recommends Starter, Business or Premium.
    Each answer has a tier (0 Starter, 1 Business, 2 Premium). The result is
    the average tier, raised to at least the "min" of any answer that needs a
-   bigger plan (e.g. two languages can't be done on Starter).
+   bigger plan (e.g. two languages can't be done on Starter). An answer with
+   "addon" also suggests that add-on (its price comes from the add-on card).
    Prices are read from the pricing cards in index.html.
    ========================================================================== */
 (function () {
@@ -38,6 +39,7 @@
       a: [
         { tier: 0, en: "Call me or send a message", el: "Να με καλέσουν ή να μου στείλουν μήνυμα" },
         { tier: 1, min: 1, en: "Book a table or appointment, or send an enquiry", el: "Να κλείσουν τραπέζι ή ραντεβού, ή να στείλουν αίτημα" },
+        { tier: 1, min: 1, addon: "Online ordering", en: "Order food or drinks online and pay", el: "Να παραγγέλνουν φαγητό ή ποτά online και να πληρώνουν" },
         { tier: 2, min: 2, en: "Use interactive features, like a filterable menu or live timetable", el: "Να χρησιμοποιούν διαδραστικές λειτουργίες, όπως μενού με φίλτρα ή ζωντανό πρόγραμμα" }
       ]
     },
@@ -76,6 +78,7 @@
       resultEyebrow: "Recommended for you",
       from: "from",
       why: "Why this plan",
+      addonNote: "Add Online ordering (from {price}) so customers can order and pay on your site.",
       budgetNote: "This is above the budget you picked. Get in touch and we can look at starting smaller and adding features later.",
       quote: "Get a quote for {plan}",
       compare: "Compare plans",
@@ -93,6 +96,7 @@
       resultEyebrow: "Η πρότασή μου για εσάς",
       from: "από",
       why: "Γιατί αυτό το πακέτο",
+      addonNote: "Προσθέστε τις Online παραγγελίες (από {price}) για να παραγγέλνουν και να πληρώνουν οι πελάτες στην ιστοσελίδα σας.",
       budgetNote: "Είναι πάνω από το budget που επιλέξατε. Επικοινωνήστε μαζί μου και μπορούμε να ξεκινήσουμε με κάτι μικρότερο και να προσθέσουμε λειτουργίες αργότερα.",
       quote: "Ζητήστε προσφορά για το {plan}",
       compare: "Σύγκριση πακέτων",
@@ -124,6 +128,16 @@
   function card(plan) { return document.querySelector('[data-plan-card="' + plan + '"]'); }
   function planName(plan) { var c = card(plan); return c ? c.querySelector("h3").textContent.trim() : plan; }
   function planPrice(plan) { var c = card(plan); return c ? c.querySelector(".plan-price strong").textContent.trim() : ""; }
+
+  function addonPrice(name) {
+    var c = document.querySelector('[data-addon-card="' + name + '"] .care-price strong');
+    return c ? c.textContent.trim() : "";
+  }
+  function pickedAddon() {
+    var found = null;
+    QUESTIONS.forEach(function (Q, i) { var opt = Q.a[answers[i]]; if (opt && opt.addon) found = opt.addon; });
+    return found;
+  }
 
   function renderQuestion() {
     var Q = QUESTIONS[step];
@@ -174,7 +188,8 @@
 
   // Plain-text summary that goes into the enquiry form (always in English, for you)
   function summary(plan) {
-    return "Recommended: " + plan + " | " + QUESTIONS.map(function (Q, i) {
+    var addon = pickedAddon();
+    return "Recommended: " + plan + (addon ? " + " + addon + " add-on" : "") + " | " + QUESTIONS.map(function (Q, i) {
       return Q.q.en + " " + Q.a[answers[i]].en;
     }).join(" | ");
   }
@@ -201,6 +216,8 @@
     why.appendChild(el("p", null, tx("reasons")[r.tier]));
     body.appendChild(why);
 
+    var addon = pickedAddon();
+    if (addon) body.appendChild(el("p", "finder-addon", fill(tx("addonNote"), { price: addonPrice(addon) })));
     if (r.overBudget) body.appendChild(el("p", "finder-note", tx("budgetNote")));
 
     var actions = el("div", "finder-actions");
@@ -212,6 +229,8 @@
       var hidden = document.getElementById("f-finder");
       if (sel) sel.value = plan;
       if (hidden) hidden.value = summary(plan);
+      var feature = addon && document.querySelector('input[name="features"][value^="' + addon + '"]');
+      if (feature) feature.checked = true;
       hide();
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     });
