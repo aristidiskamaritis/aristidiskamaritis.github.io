@@ -29,11 +29,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/work/olive-720.jpg?v=16" imagesrcset="images/work/olive-720.jpg?v=16 720w, images/work/olive-1200.jpg?v=16 1200w" imagesizes="(max-width: 900px) 80vw, 560px">
 
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
   <script>document.documentElement.classList.add("js");</script>
   <script src="js/config.js?v=16" defer></script>
-  <script src="js/i18n.js?v=18" defer></script>
-  <script src="js/main.js?v=16" defer></script>
+  <script src="js/i18n.js?v=19" defer></script>
+  <script src="js/main.js?v=17" defer></script>
   <script src="js/finder.js?v=17" defer></script>
   <script src="js/reach.js?v=16" defer></script>
   <script src="js/reviews.js?v=16" defer></script>
@@ -81,6 +81,7 @@
   </svg>
 
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" id="top">
@@ -165,6 +166,7 @@
               <div class="device-bar"><i></i><i></i><i></i><span>akwebdev.com/olive-and-oat</span></div>
               <img src="images/work/olive-720.jpg?v=16" srcset="images/work/olive-720.jpg?v=16 720w, images/work/olive-1200.jpg?v=16 1200w" sizes="(max-width: 900px) 92vw, 640px" width="1200" height="750" alt="Olive & Oat website homepage" loading="lazy" decoding="async">
             </div>
+            <div class="phone" aria-hidden="true"><img src="images/work/olive-mobile.jpg?v=1" width="360" height="779" alt="" loading="lazy" decoding="async"></div>
             <span class="project-open"><span data-i18n="work.open">Open live site</span><svg class="ico"><use href="#i-out"/></svg></span>
           </a>
           <div class="project-body">
@@ -184,6 +186,7 @@
               <div class="device-bar"><i></i><i></i><i></i><span>akwebdev.com/forge-athletic</span></div>
               <img src="images/work/forge-720.jpg?v=16" srcset="images/work/forge-720.jpg?v=16 720w, images/work/forge-1200.jpg?v=16 1200w" sizes="(max-width: 900px) 92vw, 640px" width="1200" height="750" alt="FORGE Athletic Club website homepage" loading="lazy" decoding="async">
             </div>
+            <div class="phone" aria-hidden="true"><img src="images/work/forge-mobile.jpg?v=1" width="360" height="779" alt="" loading="lazy" decoding="async"></div>
             <span class="project-open"><span data-i18n="work.open">Open live site</span><svg class="ico"><use href="#i-out"/></svg></span>
           </a>
           <div class="project-body">
@@ -325,143 +328,161 @@
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow" data-i18n="price.eyebrow">Packages</p>
-          <h2 id="pricing-title" data-i18n="price.title">Pricing</h2>
-          <p class="section-lead" data-i18n="price.lead">These are starting prices. You receive a fixed quote before any work begins.</p>
+          <h2 id="pricing-title" data-i18n="price.title">Ways I can help</h2>
+          <p class="section-lead" data-i18n="price.lead">Every website is shaped around your business. Pick a starting point and we’ll adjust it to what you need, with a fixed quote agreed before any work begins.</p>
         </header>
-
-        <div class="finder-cta reveal">
-          <p><strong data-i18n="finder.cta.t">Not sure which plan fits?</strong> <span data-i18n="finder.cta.d">Answer 6 quick questions and get a recommendation.</span></p>
-          <button type="button" class="btn btn-outline-dark" id="finder-open"><span data-i18n="finder.cta.btn">Find my plan</span><svg class="ico"><use href="#i-arrow"/></svg></button>
-        </div>
 
         <!-- Prices: update in this block (the plan finder reads them from here) -->
         <div class="plans">
           <article class="plan reveal" data-plan-card="Starter">
             <h3 data-i18n="price.1.t">Starter</h3>
-            <p class="plan-desc" data-i18n="price.1.d">A clean, fast website of up to 3 pages for businesses that need a professional presence online.</p>
-            <p class="plan-chip" data-i18n="price.custom">Custom design, no templates</p>
-            <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€399</strong></p>
+            <p class="plan-desc" data-i18n="price.1.d">A clean, fast website that gives your business a professional home online.</p>
             <ul class="plan-list" data-i18n="price.1.list">
               <li>Up to 3 pages</li>
-              <li>Fast on desktop and mobile</li>
               <li>Contact form, WhatsApp and Viber buttons</li>
               <li>Google Maps and basic SEO</li>
               <li>English or Greek (both <span class="nowrap">+€120</span>)</li>
             </ul>
-            <a href="#contact" class="btn btn-outline-dark" data-plan="Starter" data-i18n="price.cta">Get a quote</a>
+            <div class="plan-foot">
+              <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€399</strong></p>
+              <a href="#contact" class="btn btn-outline-dark" data-plan="Starter" data-i18n="price.cta">Let’s talk</a>
+            </div>
           </article>
 
           <article class="plan plan-featured reveal" data-plan-card="Business">
             <p class="plan-flag" data-i18n="price.popular">Recommended</p>
             <h3 data-i18n="price.2.t">Business</h3>
-            <p class="plan-desc" data-i18n="price.2.d">A complete website in both languages, with bookings or enquiries built in.</p>
-            <p class="plan-chip" data-i18n="price.bilingual">English + Greek included</p>
-            <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€790</strong></p>
+            <p class="plan-desc" data-i18n="price.2.d">A complete bilingual website that turns visitors into bookings and enquiries.</p>
             <ul class="plan-list" data-i18n="price.2.list">
               <li><strong>Everything in Starter, plus:</strong></li>
-              <li>Up to 8 pages</li>
-              <li>English and Greek versions</li>
+              <li>Up to 8 pages in English and Greek</li>
               <li>Booking or enquiry form</li>
-              <li>Photo gallery and reviews</li>
-              <li>Google Business Profile setup</li>
-              <li>First 2 months of Care free</li>
+              <li>Gallery, reviews and Google Business Profile</li>
+              <li>First 2 months of Care included</li>
             </ul>
-            <a href="#contact" class="btn btn-primary" data-plan="Business" data-i18n="price.cta">Get a quote</a>
+            <div class="plan-foot">
+              <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€790</strong></p>
+              <a href="#contact" class="btn btn-primary" data-plan="Business" data-i18n="price.cta">Let’s talk</a>
+            </div>
           </article>
 
           <article class="plan reveal" data-plan-card="Premium">
             <h3 data-i18n="price.3.t">Premium</h3>
-            <p class="plan-desc" data-i18n="price.3.d">For businesses that want to stand out, with video and custom features like the demos above.</p>
-            <p class="plan-chip" data-i18n="price.bilingual">English + Greek included</p>
-            <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€1,290</strong></p>
+            <p class="plan-desc" data-i18n="price.3.d">A website that stands out, with video and custom features like the demos above.</p>
             <ul class="plan-list" data-i18n="price.3.list">
               <li><strong>Everything in Business, plus:</strong></li>
               <li>Up to 12 pages</li>
               <li>Video and scroll animation</li>
               <li>Custom features such as menus or timetables</li>
-              <li>Advanced SEO and visitor analytics</li>
-              <li>First 3 months of Care Plus free</li>
+              <li>First 3 months of Care Plus included</li>
             </ul>
-            <a href="#contact" class="btn btn-outline-dark" data-plan="Premium" data-i18n="price.cta">Get a quote</a>
+            <div class="plan-foot">
+              <p class="plan-price"><small data-i18n="price.from">from</small> <strong>€1,290</strong></p>
+              <a href="#contact" class="btn btn-outline-dark" data-plan="Premium" data-i18n="price.cta">Let’s talk</a>
+            </div>
           </article>
         </div>
 
         <div class="included reveal">
           <p class="included-title" data-i18n="price.inc.t">Every package includes</p>
           <ul data-i18n="price.inc.list">
+            <li>Custom design, no templates</li>
+            <li>Fast on phones and computers</li>
             <li>A fixed quote before we start</li>
             <li>Launch on your own domain</li>
             <li>The website and content are yours</li>
             <li>30 days of free fixes after launch</li>
           </ul>
+          <p class="finder-cta"><span data-i18n="finder.cta.t">Not sure which fits?</span> <button type="button" class="finder-link" id="finder-open"><span data-i18n="finder.cta.btn">Answer 6 quick questions</span><svg class="ico"><use href="#i-arrow"/></svg></button></p>
         </div>
 
-        <!-- Add-ons: one-off extras on top of any package -->
-        <div class="care addons reveal">
-          <div class="care-head">
-            <h3 data-i18n="price.addons.t">Add-ons <small>(one-off)</small></h3>
-            <p data-i18n="price.addons.d">Add any of these to a website package. Already have a website? Ask me about adding them to it.</p>
-          </div>
-          <div class="care-tier care-tier-plus addon" data-addon-card="Online ordering">
-            <p class="addon-flag" data-i18n="price.new">New</p>
-            <p class="care-name" data-i18n="price.order.t">Online ordering</p>
-            <p class="care-price"><small data-i18n="price.from">from</small> <strong>€690</strong></p>
-            <p class="addon-desc" data-i18n="price.order.for">For restaurants, cafés and takeaways that want orders without paying app commissions, and fewer waiters on busy shifts.</p>
-            <ul class="care-list" data-i18n="price.order.list">
-              <li>Customers order from your menu for pickup or delivery</li>
-              <li>Card, Apple Pay and Google Pay, or pay on collection</li>
-              <li>Every order arrives instantly on your phone</li>
-              <li>An orders page for your staff, with sold-out switches</li>
-              <li>Delivery fee, minimum order and delivery areas</li>
-              <li>Customers follow their order status live</li>
-              <li>English and Greek</li>
-              <li><strong>Table ordering by QR code, +€150:</strong> guests order and pay from their phone, call a waiter or ask for the bill</li>
-            </ul>
-            <p class="addon-note" data-i18n="price.order.note">No commission per order: you only pay Stripe’s card fee (about 1.5% + €0.25). Needs a Care plan.</p>
-            <a class="addon-link" href="https://akwebdev.com/olive-and-oat/#menu" target="_blank" rel="noopener"><span data-i18n="price.order.demo">Try it on the Olive &amp; Oat demo</span><svg class="ico"><use href="#i-out"/></svg></a>
-          </div>
-          <div class="care-tier addon">
-            <p class="care-name" data-i18n="price.pack.t">Photo &amp; logo pack</p>
-            <p class="care-price"><strong>€110</strong></p>
-            <p class="addon-desc" data-i18n="price.extra.d">Photos and a logo in one pack, so your business looks professional online without hiring a photographer and a designer separately. Add it to any package.</p>
-            <ul class="care-list" data-i18n="price.pack.list">
-              <li>Photo session of up to 2 hours at your business in Nicosia</li>
-              <li>About 25 photos from a 200 MP smartphone camera, edited for the web</li>
-              <li>An affordable alternative to a professional photographer</li>
-              <li>Logo: 2 concepts and 2 rounds of changes</li>
-              <li>Logo files in colour and black and white (SVG and PNG)</li>
-              <li>Browser icon, social media profile image and a colour and font guide</li>
-            </ul>
-          </div>
-        </div>
+        <!-- Extras: one-off add-ons and care plans on top of any package -->
+        <div class="extras">
+          <header class="extras-head reveal">
+            <h3 data-i18n="price.addons.t">Extras for your website</h3>
+            <p data-i18n="price.addons.d">Add these to any package, or to the website you already have.</p>
+          </header>
 
-        <div class="care reveal">
-          <div class="care-head">
-            <h3 data-i18n="price.care.t">Care plans <small>(optional)</small></h3>
-            <p data-i18n="price.care.d">I keep your website online, secure and up to date, so you don’t have to think about it. Cancel anytime.</p>
-            <p class="care-deal" data-i18n="price.care.deal">Pay yearly and get 2 months free</p>
-          </div>
-          <div class="care-tier">
-            <p class="care-name" data-i18n="price.care1.t">Care</p>
-            <p class="care-price"><strong>€25</strong><small data-i18n="price.month">/month</small></p>
-            <ul class="care-list" data-i18n="price.care1.list">
-              <li>Hosting and SSL certificate</li>
-              <li>Security updates and backups</li>
-              <li>Uptime monitoring</li>
-              <li>30 minutes of changes a month</li>
-            </ul>
-          </div>
-          <div class="care-tier care-tier-plus">
-            <p class="care-name" data-i18n="price.care2.t">Care Plus</p>
-            <p class="care-price"><strong>€45</strong><small data-i18n="price.month">/month</small></p>
-            <ul class="care-list" data-i18n="price.care2.list">
-              <li>Everything in Care</li>
-              <li>2 hours of changes a month</li>
-              <li>Same-day priority support</li>
-              <li>Monthly visitor and Google report</li>
-              <li>Google Business Profile updates</li>
-            </ul>
-          </div>
+          <article class="extra extra-wide reveal" data-addon-card="Online ordering">
+            <a class="extra-media" href="https://akwebdev.com/olive-and-oat/#menu" target="_blank" rel="noopener" aria-label="Try online ordering on the Olive &amp; Oat demo">
+              <img src="images/work/olive-order-720.jpg?v=1" srcset="images/work/olive-order-720.jpg?v=1 720w, images/work/olive-order-1200.jpg?v=1 1200w" sizes="(max-width: 960px) 92vw, 560px" width="720" height="450" alt="Online ordering on the Olive &amp; Oat demo: the order basket" loading="lazy" decoding="async">
+              <span class="project-open"><span data-i18n="price.order.demo">Try it on the Olive &amp; Oat demo</span><svg class="ico"><use href="#i-out"/></svg></span>
+            </a>
+            <div class="extra-body">
+              <p class="extra-name"><span data-i18n="price.order.t">Online ordering</span> <span class="addon-flag" data-i18n="price.new">New</span></p>
+              <p class="addon-desc" data-i18n="price.order.for">Let customers order and pay on your own website, with no app commissions. Made for restaurants, cafés and takeaways.</p>
+              <p class="care-price"><small data-i18n="price.from">from</small> <strong>€690</strong></p>
+              <details class="more">
+                <summary data-i18n="price.more">What’s included</summary>
+                <div class="more-body">
+                  <ul class="care-list" data-i18n="price.order.list">
+                    <li>Customers order from your menu for pickup or delivery</li>
+                    <li>Card, Apple Pay and Google Pay, or pay on collection</li>
+                    <li>Every order arrives instantly on your phone</li>
+                    <li>An orders page for your staff, with sold-out switches</li>
+                    <li>Delivery fee, minimum order and delivery areas</li>
+                    <li>Customers follow their order status live</li>
+                    <li>English and Greek</li>
+                    <li><strong>Table ordering by QR code, +€150:</strong> guests order and pay from their phone, call a waiter or ask for the bill</li>
+                  </ul>
+                  <p class="addon-note" data-i18n="price.order.note">No commission per order: you only pay Stripe’s card fee (about 1.5% + €0.25). Needs a Care plan.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="extra reveal">
+            <div class="extra-body">
+              <p class="extra-name" data-i18n="price.pack.t">Photo &amp; logo pack</p>
+              <p class="addon-desc" data-i18n="price.extra.d">I photograph your business and design your logo, so your website looks like you from day one.</p>
+              <p class="care-price"><strong>€110</strong></p>
+              <details class="more">
+                <summary data-i18n="price.more">What’s included</summary>
+                <div class="more-body">
+                  <ul class="care-list" data-i18n="price.pack.list">
+                    <li>Photo session of up to 2 hours at your business in Nicosia</li>
+                    <li>About 25 photos from a 200 MP smartphone camera, edited for the web</li>
+                    <li>Logo: 2 concepts and 2 rounds of changes</li>
+                    <li>Logo files in colour and black and white (SVG and PNG)</li>
+                    <li>Browser icon, social media profile image and a colour and font guide</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="extra reveal">
+            <div class="extra-body">
+              <p class="extra-name" data-i18n="price.care.t">Care after launch</p>
+              <p class="addon-desc" data-i18n="price.care.d">I keep your website online, secure and up to date, and make your changes for you. Cancel anytime.</p>
+              <p class="care-price"><small data-i18n="price.from">from</small> <strong>€25</strong><small data-i18n="price.month">/month</small></p>
+              <details class="more">
+                <summary data-i18n="price.care.more">Compare Care and Care Plus</summary>
+                <div class="more-body care-tiers">
+                  <div>
+                    <p class="care-name"><span data-i18n="price.care1.t">Care</span> · €25<span data-i18n="price.month">/month</span></p>
+                    <ul class="care-list" data-i18n="price.care1.list">
+                      <li>Hosting and SSL certificate</li>
+                      <li>Security updates and backups</li>
+                      <li>Uptime monitoring</li>
+                      <li>30 minutes of changes a month</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="care-name"><span data-i18n="price.care2.t">Care Plus</span> · €45<span data-i18n="price.month">/month</span></p>
+                    <ul class="care-list" data-i18n="price.care2.list">
+                      <li>Everything in Care</li>
+                      <li>2 hours of changes a month</li>
+                      <li>Same-day priority support</li>
+                      <li>Monthly visitor and Google report</li>
+                      <li>Google Business Profile updates</li>
+                    </ul>
+                  </div>
+                  <p class="addon-note" data-i18n="price.care.deal">Paying yearly? You get 2 months free.</p>
+                </div>
+              </details>
+            </div>
+          </article>
         </div>
 
       </div>
@@ -579,7 +600,7 @@
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="about-photo reveal">
-          <img src="images/me-800.jpg?v=16" srcset="images/me-480.jpg?v=16 480w, images/me-800.jpg?v=16 800w" sizes="(max-width: 960px) min(420px, 92vw), 420px" width="800" height="1000" alt="Aristeidis Kamaritis" loading="lazy" decoding="async">
+          <img src="images/me-800.jpg?v=17" srcset="images/me-480.jpg?v=17 480w, images/me-800.jpg?v=17 800w" sizes="(max-width: 960px) min(420px, 92vw), 420px" width="800" height="1000" alt="Aristeidis Kamaritis" loading="lazy" decoding="async">
           <p class="about-loc"><span class="dot" aria-hidden="true"></span><span data-i18n="about.loc">Based in Cyprus, working island-wide and remotely</span></p>
         </div>
         <div class="about-copy reveal">

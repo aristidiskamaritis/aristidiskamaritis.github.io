@@ -121,14 +121,37 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
     // Stagger siblings that enter together
     reveals.forEach(function (n) {
       var sibs = n.parentElement ? $$(":scope > .reveal", n.parentElement) : [];
       var i = sibs.indexOf(n);
-      if (i > 0) n.style.transitionDelay = Math.min(i, 5) * 70 + "ms";
+      if (i > 0) n.style.transitionDelay = Math.min(i, 4) * 60 + "ms";
       io.observe(n);
+      // Once it has arrived, drop the reveal styles so hover transitions are the element's own again
+      n.addEventListener("transitionend", function done(e) {
+        if (e.target !== n || e.propertyName !== "opacity" || !n.classList.contains("is-in")) return;
+        n.classList.remove("reveal", "is-in");
+        n.style.transitionDelay = "";
+        n.removeEventListener("transitionend", done);
+      });
     });
+  }
+
+  /* ---------- Reading progress (CSS scroll timeline where supported, otherwise this) ---------- */
+  var progress = $(".scroll-progress");
+  if (progress && !(window.CSS && CSS.supports("animation-timeline: scroll()"))) {
+    var ticking = false;
+    var paintProgress = function () {
+      var max = root.scrollHeight - window.innerHeight;
+      progress.style.setProperty("--progress", max > 0 ? Math.min(window.scrollY / max, 1) : 0);
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(paintProgress); }
+    }, { passive: true });
+    window.addEventListener("resize", paintProgress);
+    paintProgress();
   }
 
   /* ---------- Floating quick-contact ---------- */
