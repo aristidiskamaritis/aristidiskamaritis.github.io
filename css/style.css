@@ -469,22 +469,24 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 
 /* Extras: add-ons and care plans, details folded away */
-.extras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; margin-top: clamp(56px, 8vw, 96px); }
+.extras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; margin-top: clamp(56px, 8vw, 96px); }
 .extras-head { grid-column: 1 / -1; display: grid; gap: 8px; margin-bottom: 4px; }
 .extras-head h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; }
 .extras-head p { color: var(--ink-muted); }
 .extra {
   border-radius: var(--r-lg); background: #FFFFFF; border: 1px solid rgba(15, 23, 32, .1);
-  overflow: hidden;
+  overflow: hidden; display: flex; flex-direction: column;
 }
-.extra-body { display: grid; gap: 10px; align-content: start; padding: 22px 22px 18px; }
+/* Equal heights while closed; an opened panel grows only its own card */
+.extras:has(.more[open]) { align-items: start; }
+.extra-body { flex: 1; display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 22px 22px 18px; }
 .extra-name { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; }
 .addon-flag {
   padding: 3px 9px; border-radius: 7px; background: #0B7A93; color: #FFFFFF;
   font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
 }
 .addon-desc { color: var(--ink-muted); font-size: .9rem; }
-.addon-link { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding-top: 4px; font-size: .88rem; font-weight: 600; color: #0B7A93; border-bottom: 1px solid rgba(11, 122, 147, .35); transition: border-color .2s; }
+.addon-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding-top: 4px; font-size: .88rem; font-weight: 600; color: #0B7A93; border-bottom: 1px solid rgba(11, 122, 147, .35); transition: border-color .2s; }
 .addon-link:hover { border-color: #0B7A93; }
 .addon-link .ico { width: 14px; height: 14px; }
 .care-price { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
@@ -503,7 +505,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .addon-note { padding-top: 12px; border-top: 1px solid rgba(15, 23, 32, .1); color: var(--ink-muted); font-size: .86rem; }
 
 /* Expandable "What's included" */
-.more { margin-top: 6px; border-top: 1px solid rgba(15, 23, 32, .1); }
+.more { margin-top: auto; border-top: 1px solid rgba(15, 23, 32, .1); }
 .more summary {
   position: relative; list-style: none; cursor: pointer;
   padding: 14px 32px 2px 0; font-size: .92rem; font-weight: 600; color: #0B7A93;
@@ -778,11 +780,12 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 @keyframes drop { from { opacity: 0; transform: translate3d(0, -6px, 0); } }
 @supports (interpolate-size: allow-keywords) and selector(::details-content) {
   :root { interpolate-size: allow-keywords; }
-  .faq::details-content, .more::details-content {
-    block-size: 0; overflow: clip;
+  .faq::details-content, .more::details-content { block-size: 0; overflow: clip; }
+  .faq::details-content, .faq[open]::details-content, .more[open]::details-content {
     transition: block-size .35s var(--ease-out), content-visibility .35s allow-discrete;
   }
   .faq[open]::details-content, .more[open]::details-content { block-size: auto; }
+  /* Extras panels close instantly, so the equal-height cards never stretch mid-close */
 }
 .js .brief-step.is-current { animation: drop .35s var(--ease-out); }
 
