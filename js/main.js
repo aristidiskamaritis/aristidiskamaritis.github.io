@@ -80,6 +80,69 @@
   var initial = fromUrl || saved || ((navigator.language || "").toLowerCase().indexOf("el") === 0 ? "el" : "en");
   setLang(initial);
 
+  /* ---------- Hero: rotating business type ---------- */
+  // The headline's <span class="rotator"> cycles through these (setLang rewrites the
+  // headline, so the span is looked up again on every tick)
+  var ROTATE = {
+    en: ["café", "gym", "clinic", "restaurant", "salon", "shop"],
+    el: ["καφέ", "γυμναστήριο", "ιατρείο", "εστιατόριο", "κομμωτήριο", "κατάστημα"]
+  };
+  var rotateIndex = 0;
+  // Off-screen copy of the headline styles, used to measure the next word's width
+  // (kept outside the <h1> so the heading's text stays clean)
+  var measureBox = document.createElement("div");
+  measureBox.className = "hero-title";
+  measureBox.setAttribute("aria-hidden", "true");
+  measureBox.style.cssText = "position:absolute;left:-9999px;top:0;visibility:hidden;margin:0;font-weight:600";
+  var measure = document.createElement("span");
+  measure.className = "rotator";
+  measureBox.appendChild(measure);
+  $(".hero-copy").appendChild(measureBox);
+  function rotateWord() {
+    var rot = $(".hero-title .rotator");
+    if (!rot || document.hidden) return;
+    var words = ROTATE[lang] || ROTATE.en;
+    rotateIndex = (rotateIndex + 1) % words.length;
+    var next = words[rotateIndex];
+    rot.style.width = rot.getBoundingClientRect().width + "px";
+    rot.classList.remove("is-in");
+    rot.classList.add("is-out");
+    setTimeout(function () {
+      measure.textContent = next;
+      rot.textContent = next;
+      rot.style.width = measure.getBoundingClientRect().width + "px";
+      rot.classList.remove("is-out");
+      rot.classList.add("is-in");
+    }, 280);
+  }
+  if (!reduceMotion) setInterval(rotateWord, 2600);
+
+  /* ---------- Hero: 3D tilt and spotlight that follow the pointer (mouse devices only) ---------- */
+  var heroEl = $(".hero");
+  var stage = $(".hero .stage");
+  if (stage && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var tiltFrame = 0, px = 0, py = 0;
+    var paintTilt = function () {
+      var r = heroEl.getBoundingClientRect();
+      var nx = (px - r.left) / r.width - .5, ny = (py - r.top) / r.height - .5;
+      stage.style.setProperty("--ry", (nx * 10).toFixed(2) + "deg");
+      stage.style.setProperty("--rx", (-ny * 8).toFixed(2) + "deg");
+      heroEl.style.setProperty("--mx", (px - r.left) + "px");
+      heroEl.style.setProperty("--my", (py - r.top) + "px");
+      tiltFrame = 0;
+    };
+    heroEl.addEventListener("pointermove", function (e) {
+      px = e.clientX; py = e.clientY;
+      heroEl.classList.add("has-pointer");
+      if (!tiltFrame) tiltFrame = requestAnimationFrame(paintTilt);
+    });
+    heroEl.addEventListener("pointerleave", function () {
+      heroEl.classList.remove("has-pointer");
+      stage.style.setProperty("--rx", "0deg");
+      stage.style.setProperty("--ry", "0deg");
+    });
+  }
+
   /* ---------- Header & mobile nav ---------- */
   var header = $(".site-header");
   var toggle = $(".nav-toggle");

@@ -27,13 +27,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="images/work/olive-720.jpg?v=16" imagesrcset="images/work/olive-720.jpg?v=16 720w, images/work/olive-1200.jpg?v=16 1200w" imagesizes="(max-width: 900px) 80vw, 560px">
+  <link rel="preload" as="image" href="images/work/olive-thumb-720.jpg?v=1" imagesrcset="images/work/olive-thumb-720.jpg?v=1 720w, images/work/olive-thumb-1200.jpg?v=1 1200w" imagesizes="(max-width: 960px) 80vw, 520px">
 
-  <link rel="stylesheet" href="css/style.css?v=23">
+  <link rel="stylesheet" href="css/style.css?v=24">
   <script>document.documentElement.classList.add("js");</script>
   <script src="js/config.js?v=16" defer></script>
-  <script src="js/i18n.js?v=19" defer></script>
-  <script src="js/main.js?v=19" defer></script>
+  <script src="js/i18n.js?v=20" defer></script>
+  <script src="js/main.js?v=20" defer></script>
   <script src="js/finder.js?v=17" defer></script>
   <script src="js/reach.js?v=16" defer></script>
   <script src="js/reviews.js?v=16" defer></script>
@@ -120,11 +120,11 @@
 
     <!-- ============ HOME ============ -->
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="status-pill"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Taking on new projects</span></p>
-          <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Professional websites for <em>businesses in Cyprus.</em></h1>
+          <p class="status-pill"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Taking on new projects in Cyprus</span></p>
+          <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Websites that bring more customers to your <span class="rotator">café</span>.</h1>
           <p class="hero-lead" data-i18n="hero.lead">I’m Aristeidis Kamaritis, a freelance web designer and developer based in Cyprus. I build bilingual websites that load quickly, look right on every screen and make it easy for customers to get in touch.</p>
           <div class="hero-ctas">
             <a href="#contact" class="btn btn-primary btn-lg"><span data-i18n="hero.cta1">Discuss your project</span><svg class="ico"><use href="#i-arrow"/></svg></a>
@@ -138,15 +138,17 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="device device-back">
-            <div class="device-bar"><i></i><i></i><i></i><span>forge-athletic</span></div>
-            <img src="images/work/forge-720.jpg?v=16" width="720" height="450" alt="" decoding="async">
-          </div>
-          <div class="device device-front">
-            <div class="device-bar"><i></i><i></i><i></i><span>olive-and-oat</span></div>
-            <img src="images/work/olive-720.jpg?v=16" srcset="images/work/olive-720.jpg?v=16 720w, images/work/olive-1200.jpg?v=16 1200w" sizes="(max-width: 900px) 80vw, 560px" width="720" height="450" alt="" fetchpriority="high" decoding="async">
+          <div class="stage">
+            <div class="card card-back"><img src="images/work/forge-thumb-720.jpg?v=1" srcset="images/work/forge-thumb-720.jpg?v=1 720w, images/work/forge-thumb-1200.jpg?v=1 1200w" sizes="(max-width: 960px) 70vw, 460px" width="1200" height="750" alt="" decoding="async"></div>
+            <div class="card card-front"><img src="images/work/olive-thumb-720.jpg?v=1" srcset="images/work/olive-thumb-720.jpg?v=1 720w, images/work/olive-thumb-1200.jpg?v=1 1200w" sizes="(max-width: 960px) 80vw, 520px" width="1200" height="750" alt="" fetchpriority="high" decoding="async"></div>
+            <span class="float-chip chip-1"><svg class="ico"><use href="#i-check"/></svg><span data-i18n="hero.chip1">Online ordering</span></span>
+            <span class="float-chip chip-2">EN · ΕΛ</span>
+            <span class="float-chip chip-3"><span class="dot"></span><span data-i18n="hero.chip3">2 live demos</span></span>
           </div>
         </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track"><div class="ticker-set"><span data-i18n="svc.1.t">Website design</span><i>✦</i><span data-i18n="svc.2.t">Development</span><i>✦</i><span data-i18n="svc.3.t">Bilingual websites</span><i>✦</i><span data-i18n="svc.4.t">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="svc.5.t">Search engine optimisation</span><i>✦</i><span data-i18n="svc.6.t">Hosting and maintenance</span><i>✦</i></div><div class="ticker-set"><span data-i18n="svc.1.t">Website design</span><i>✦</i><span data-i18n="svc.2.t">Development</span><i>✦</i><span data-i18n="svc.3.t">Bilingual websites</span><i>✦</i><span data-i18n="svc.4.t">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="svc.5.t">Search engine optimisation</span><i>✦</i><span data-i18n="svc.6.t">Hosting and maintenance</span><i>✦</i></div></div>
       </div>
     </section>
 
