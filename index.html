@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="css/style.css?v=18">
   <script>document.documentElement.classList.add("js");</script>
   <script src="js/config.js?v=16" defer></script>
-  <script src="js/i18n.js?v=17" defer></script>
+  <script src="js/i18n.js?v=18" defer></script>
   <script src="js/main.js?v=16" defer></script>
   <script src="js/finder.js?v=17" defer></script>
   <script src="js/reach.js?v=16" defer></script>
@@ -170,9 +170,9 @@
           <div class="project-body">
             <p class="project-meta"><span class="tag" data-i18n="work.concept">Concept project</span><span data-i18n="work.p1.meta">Brunch café · Nicosia</span></p>
             <h3 class="project-title">Olive &amp; Oat</h3>
-            <p class="project-text" data-i18n="work.p1.text">A website concept for a brunch café in Nicosia. The homepage uses a video that moves with the scroll, and the menu, opening hours and table booking are never more than a tap away. Visitors can also add dishes to a cart and go through checkout.</p>
+            <p class="project-text" data-i18n="work.p1.text">A website concept for a brunch café in Nicosia. The homepage uses a video that moves with the scroll, and the menu, opening hours and table booking are never more than a tap away. Visitors can also add dishes to a cart and go through checkout, or order from their seat as "Table 5".</p>
             <ul class="chips" data-i18n="work.p1.chips">
-              <li>Scroll-linked video</li><li>Interactive menu</li><li>Table reservations</li><li>Online ordering</li><li>Live open/closed status</li><li>EN · ΕΛ</li><li>Google-ready</li>
+              <li>Scroll-linked video</li><li>Interactive menu</li><li>Table reservations</li><li>Online ordering</li><li>QR table ordering</li><li>Live open/closed status</li><li>EN · ΕΛ</li><li>Google-ready</li>
             </ul>
             <a class="link-arrow" data-cfg-href="demoOlive" href="https://akwebdev.com/olive-and-oat/" target="_blank" rel="noopener"><span data-i18n="work.visit">Visit the live site</span><svg class="ico"><use href="#i-out"/></svg></a>
           </div>
@@ -233,7 +233,7 @@
           <article class="svc reveal">
             <span class="svc-num">04</span>
             <h3 data-i18n="svc.4.t">Bookings, enquiries and orders</h3>
-            <p data-i18n="svc.4.d">Booking, trial and quote request forms that arrive straight in your inbox, plus online ordering with payments for restaurants and cafés.</p>
+            <p data-i18n="svc.4.d">Booking, trial and quote request forms that arrive straight in your inbox, plus online ordering with payments for restaurants and cafés, including QR ordering at the table.</p>
           </article>
           <article class="svc reveal">
             <span class="svc-num">05</span>
@@ -406,7 +406,7 @@
             <p class="addon-flag" data-i18n="price.new">New</p>
             <p class="care-name" data-i18n="price.order.t">Online ordering</p>
             <p class="care-price"><small data-i18n="price.from">from</small> <strong>€690</strong></p>
-            <p class="addon-desc" data-i18n="price.order.for">For restaurants, cafés and takeaways that want orders without paying app commissions.</p>
+            <p class="addon-desc" data-i18n="price.order.for">For restaurants, cafés and takeaways that want orders without paying app commissions, and fewer waiters on busy shifts.</p>
             <ul class="care-list" data-i18n="price.order.list">
               <li>Customers order from your menu for pickup or delivery</li>
               <li>Card, Apple Pay and Google Pay, or pay on collection</li>
@@ -415,6 +415,7 @@
               <li>Delivery fee, minimum order and delivery areas</li>
               <li>Customers follow their order status live</li>
               <li>English and Greek</li>
+              <li><strong>Table ordering by QR code, +€150:</strong> guests order and pay from their phone, call a waiter or ask for the bill</li>
             </ul>
             <p class="addon-note" data-i18n="price.order.note">No commission per order: you only pay Stripe’s card fee (about 1.5% + €0.25). Needs a Care plan.</p>
             <a class="addon-link" href="https://akwebdev.com/olive-and-oat/#menu" target="_blank" rel="noopener"><span data-i18n="price.order.demo">Try it on the Olive &amp; Oat demo</span><svg class="ico"><use href="#i-out"/></svg></a>
@@ -626,7 +627,7 @@
           </details>
           <details class="faq reveal">
             <summary data-i18n="faq.7.q">Can customers order and pay on my website?</summary>
-            <p data-i18n="faq.7.a">Yes, with the Online ordering add-on (from €690). Customers order for pickup or delivery and pay by card, Apple Pay or Google Pay, or when they collect. Each order arrives on your phone straight away, and there is no commission per order, only Stripe’s card fee. You can try it on the Olive &amp; Oat demo.</p>
+            <p data-i18n="faq.7.a">Yes, with the Online ordering add-on (from €690). Customers order for pickup or delivery and pay by card, Apple Pay or Google Pay, or when they collect. Each order arrives on your phone straight away, and there is no commission per order, only Stripe’s card fee. With table ordering (+€150), guests in your café scan a QR code on their table, order and pay from their phone, and can call a waiter or ask for the bill, so you need fewer staff taking orders. You can try both on the Olive &amp; Oat demo.</p>
           </details>
           <details class="faq reveal">
             <summary data-i18n="faq.6.q">How do payments work?</summary>
@@ -783,6 +784,7 @@
               <label><input type="checkbox" name="features" value="WhatsApp / Viber buttons"> <span data-i18n="brief.ft.chat">WhatsApp / Viber buttons</span></label>
               <label><input type="checkbox" name="features" value="Online booking"> <span data-i18n="brief.ft.booking">Online booking</span></label>
               <label><input type="checkbox" name="features" value="Online ordering (pickup / delivery)"> <span data-i18n="brief.ft.order">Online ordering (pickup or delivery)</span></label>
+              <label><input type="checkbox" name="features" value="QR table ordering"> <span data-i18n="brief.ft.table">QR ordering at the table</span></label>
               <label><input type="checkbox" name="features" value="Google Maps"> <span data-i18n="brief.ft.map">Google Maps</span></label>
               <label><input type="checkbox" name="features" value="Opening hours"> <span data-i18n="brief.ft.hours">Opening hours</span></label>
               <label><input type="checkbox" name="features" value="Photo gallery"> <span data-i18n="brief.ft.gallery">Photo gallery</span></label>
