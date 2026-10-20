@@ -138,14 +138,6 @@
     });
   }
 
-  /* ---------- Work: scroll each demo's preview only while its project is on screen ---------- */
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    var tourIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { en.target.classList.toggle("is-touring", en.isIntersecting); });
-    }, { threshold: 0.35 });
-    $$(".project").forEach(function (p) { tourIo.observe(p); });
-  }
-
   /* ---------- Reading progress (CSS scroll timeline where supported, otherwise this) ---------- */
   var progress = $(".scroll-progress");
   if (progress && !(window.CSS && CSS.supports("animation-timeline: scroll()"))) {

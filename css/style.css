@@ -224,18 +224,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .device img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
-/* Work section: the whole demo homepage scrolls past inside the frame while it is on screen */
-.screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: size; background: var(--surface-2); }
-.device .screen img { aspect-ratio: auto; height: auto; object-fit: initial; }
-.tour {
-  animation: tour var(--tour-dur, 40s) ease-in-out infinite alternate; animation-play-state: paused;
-  will-change: transform;
-}
-.project.is-touring .tour { animation-play-state: running; }
-@keyframes tour {
-  0%, 6% { transform: none; }
-  94%, 100% { transform: translate3d(0, calc(-100% + 100cqh), 0); }
-}
+
 
 .hero-visual .device { position: absolute; }
 .device-back { width: 76%; top: 0; right: 0; opacity: .55; }
@@ -253,18 +242,11 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .project + .project { border-top: 1px solid var(--line); }
 .project-flip .project-media { order: 2; }
 .project-media { position: relative; display: block; border-radius: 16px; }
-.project-media .device { transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
-.project-media img { transition: transform .6s var(--ease-out); }
-.phone {
-  position: absolute; left: clamp(-28px, -2vw, -10px); bottom: -26px; z-index: 1;
-  width: 21%; min-width: 92px; padding: 5px; border-radius: 18px;
-  background: #05080B; border: 1px solid var(--line-2);
-  box-shadow: 0 24px 40px -18px rgba(0, 0, 0, .85);
-  transition: transform .5s var(--ease-out), opacity .5s var(--ease-out);
+.project-thumb {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px;
+  border: 1px solid var(--line-2); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+  transition: transform .5s var(--ease-out), border-color .3s var(--ease);
 }
-.phone img { width: 100%; aspect-ratio: 360 / 779; object-fit: cover; object-position: top; border-radius: 13px; }
-.js .project.reveal:not(.is-in) .phone { opacity: 0; transform: translate3d(0, 28px, 0); }
-.js .project.reveal.is-in .phone { transition-delay: .18s; }
 .project-open {
   position: absolute; right: 18px; bottom: 18px;
   display: inline-flex; align-items: center; gap: 8px;
@@ -815,9 +797,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 /* Hover lifts only where there is a mouse; touch screens get a quick press instead */
 @media (hover: hover) {
   .btn:hover .ico { transform: translateX(3px); }
-  .project-media:hover .device { transform: translate3d(0, -4px, 0); border-color: rgba(76, 201, 224, .35); }
-  .project-media:hover .phone { transform: translate3d(0, -10px, 0) rotate(-2deg); }
-  .project-media:hover .tour { animation-play-state: paused; } /* hover holds the frame so it can be read */
+  .project-media:hover .project-thumb { transform: translate3d(0, -4px, 0); border-color: rgba(76, 201, 224, .35); }
   .next-card:hover { transform: translate3d(0, -3px, 0); }
   .promise:hover { transform: translate3d(0, -3px, 0); }
   .plan:hover { transform: translate3d(0, -4px, 0); box-shadow: 0 30px 60px -35px rgba(15, 23, 32, .35); }
@@ -896,15 +876,12 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   .faq summary { font-size: 1rem; padding-right: 40px; }
   .faq p { padding-right: 0; }
   .included ul, .care-tiers { grid-template-columns: 1fr; }
-  .phone { left: -6px; bottom: -18px; width: 25%; min-width: 0; padding: 4px; border-radius: 14px; }
-  .phone img { border-radius: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tour { animation: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .js .reveal, .js .hero-copy > *, .js .hero-visual, .js .project.reveal .phone { opacity: 1; transform: none; animation: none; }
+  .js .reveal, .js .hero-copy > *, .js .hero-visual { opacity: 1; transform: none; animation: none; }
   .hero-visual .device { animation: none; }
 }
 .nowrap { white-space: nowrap; }
