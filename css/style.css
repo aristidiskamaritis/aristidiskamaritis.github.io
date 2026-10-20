@@ -469,7 +469,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 
 /* Extras: add-ons and care plans, details folded away */
-.extras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: start; margin-top: clamp(56px, 8vw, 96px); }
+.extras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; margin-top: clamp(56px, 8vw, 96px); }
 .extras-head { grid-column: 1 / -1; display: grid; gap: 8px; margin-bottom: 4px; }
 .extras-head h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; }
 .extras-head p { color: var(--ink-muted); }
@@ -477,18 +477,18 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   border-radius: var(--r-lg); background: #FFFFFF; border: 1px solid rgba(15, 23, 32, .1);
   overflow: hidden;
 }
-.extra-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; }
-.extra-media { position: relative; display: block; align-self: stretch; overflow: hidden; background: var(--ink); }
-.extra-media img { width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; transition: transform .6s var(--ease); }
-.extra-body { display: grid; gap: 12px; align-content: start; padding: clamp(24px, 3vw, 36px); }
-.extra-name { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 1.2rem; font-weight: 600; letter-spacing: -.01em; }
+.extra-body { display: grid; gap: 10px; align-content: start; padding: 22px 22px 18px; }
+.extra-name { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; }
 .addon-flag {
   padding: 3px 9px; border-radius: 7px; background: #0B7A93; color: #FFFFFF;
   font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
 }
-.addon-desc { color: var(--ink-muted); font-size: .95rem; }
+.addon-desc { color: var(--ink-muted); font-size: .9rem; }
+.addon-link { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding-top: 4px; font-size: .88rem; font-weight: 600; color: #0B7A93; border-bottom: 1px solid rgba(11, 122, 147, .35); transition: border-color .2s; }
+.addon-link:hover { border-color: #0B7A93; }
+.addon-link .ico { width: 14px; height: 14px; }
 .care-price { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
-.care-price strong { font: 600 1.3rem/1 var(--sans); letter-spacing: -.015em; }
+.care-price strong { font: 600 1.2rem/1 var(--sans); letter-spacing: -.015em; }
 .care-price small { color: var(--ink-muted); font-size: .86rem; }
 .care-name { margin-bottom: 10px; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #0B7A93; }
 .care-name span { letter-spacing: inherit; }
@@ -498,7 +498,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 7px;
   border-left: 1.6px solid #0B7A93; border-bottom: 1.6px solid #0B7A93; transform: rotate(-45deg) scale(.8); transform-origin: left top;
 }
-.care-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.care-tiers { display: grid; gap: 18px; }
 .care-tiers .addon-note { grid-column: 1 / -1; }
 .addon-note { padding-top: 12px; border-top: 1px solid rgba(15, 23, 32, .1); color: var(--ink-muted); font-size: .86rem; }
 
@@ -807,7 +807,6 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   .promise:hover { transform: translate3d(0, -3px, 0); }
   .plan:hover { transform: translate3d(0, -4px, 0); box-shadow: 0 30px 60px -35px rgba(15, 23, 32, .35); }
   .plan-featured:hover { box-shadow: 0 46px 80px -40px rgba(15, 23, 32, .7); }
-  .extra-media:hover img { transform: scale(1.03); }
   .channel:hover { transform: translate3d(3px, 0, 0); }
 }
 .btn:active, .next-card:active, .channel:active, .finder-opt:active, .quick-btn:active {
@@ -856,7 +855,6 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   .included, .extras { max-width: 520px; margin-inline: auto; }
   .included ul { grid-template-columns: 1fr 1fr; }
   .extras { grid-template-columns: 1fr; }
-  .extra-wide { grid-template-columns: 1fr; }
   .about-photo { max-width: 420px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
