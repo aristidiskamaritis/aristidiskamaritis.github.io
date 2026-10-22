@@ -340,12 +340,12 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .svc {
   position: relative;
-  padding: clamp(28px, 3vw, 40px);
+  padding: clamp(22px, 2.4vw, 30px);
   border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
   transition: background .35s var(--ease);
 }
 .svc:hover { background: rgba(76, 201, 224, .045); }
-.svc-num { display: block; font-size: .85rem; font-weight: 600; color: var(--accent); margin-bottom: 28px; font-variant-numeric: tabular-nums; }
+.svc-num { display: block; font-size: .85rem; font-weight: 600; color: var(--accent); margin-bottom: 16px; font-variant-numeric: tabular-nums; }
 .svc h3 { font-size: 1.2rem; margin-bottom: 10px; }
 .svc p { color: var(--muted); font-size: .95rem; }
 
