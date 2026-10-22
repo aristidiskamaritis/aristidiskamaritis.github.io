@@ -7,6 +7,9 @@
   var root = document.documentElement;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var lang = "en";
+  // Full scroll motion (motion.js) needs its libraries from the CDN; otherwise the simple reveals below run
+  window.MOTION = !reduceMotion && !!(window.gsap && window.ScrollTrigger && window.Lenis);
+  if (window.MOTION) root.classList.add("motion");
 
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
@@ -176,7 +179,7 @@
   }
 
   /* ---------- Reveal on scroll ---------- */
-  var reveals = $$(".reveal");
+  var reveals = window.MOTION ? [] : $$(".reveal");
   if (reduceMotion || !("IntersectionObserver" in window)) {
     reveals.forEach(function (n) { n.classList.add("is-in"); });
   } else {
@@ -264,7 +267,8 @@
     status.className = "form-status";
     status.textContent = "";
     if (move) {
-      form.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      if (window.lenis) window.lenis.scrollTo(form, { offset: -100 });
+      else form.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
       var title = $(".brief-step-title", steps[i]);
       title.tabIndex = -1;
       title.focus({ preventScroll: true });

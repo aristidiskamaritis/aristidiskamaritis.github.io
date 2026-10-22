@@ -29,11 +29,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/work/olive-thumb-720.jpg?v=1" imagesrcset="images/work/olive-thumb-720.jpg?v=1 720w, images/work/olive-thumb-1200.jpg?v=1 1200w" imagesizes="(max-width: 960px) 80vw, 520px">
 
-  <link rel="stylesheet" href="css/style.css?v=26">
+  <link rel="stylesheet" href="css/style.css?v=27">
   <script>document.documentElement.classList.add("js");</script>
   <script src="js/config.js?v=16" defer></script>
-  <script src="js/i18n.js?v=22" defer></script>
-  <script src="js/main.js?v=20" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="js/i18n.js?v=23" defer></script>
+  <script src="js/main.js?v=21" defer></script>
+  <script src="js/motion.js?v=1" defer></script>
   <script src="js/finder.js?v=17" defer></script>
   <script src="js/reach.js?v=16" defer></script>
   <script src="js/reviews.js?v=16" defer></script>
@@ -82,6 +86,7 @@
 
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><div class="aurora-field"><span class="aur a1"></span><span class="aur a2"></span><span class="aur a3"></span></div></div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" id="top">
@@ -148,7 +153,7 @@
         </div>
       </div>
       <div class="ticker" aria-hidden="true">
-        <div class="ticker-track"><div class="ticker-set"><span data-i18n="svc.1.t">Website design</span><i>✦</i><span data-i18n="svc.2.t">Development</span><i>✦</i><span data-i18n="svc.3.t">Bilingual websites</span><i>✦</i><span data-i18n="svc.4.t">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="svc.5.t">Search engine optimisation</span><i>✦</i><span data-i18n="svc.6.t">Hosting and maintenance</span><i>✦</i></div><div class="ticker-set"><span data-i18n="svc.1.t">Website design</span><i>✦</i><span data-i18n="svc.2.t">Development</span><i>✦</i><span data-i18n="svc.3.t">Bilingual websites</span><i>✦</i><span data-i18n="svc.4.t">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="svc.5.t">Search engine optimisation</span><i>✦</i><span data-i18n="svc.6.t">Hosting and maintenance</span><i>✦</i></div></div>
+        <div class="ticker-track"><div class="ticker-set"><span data-i18n="tick.1">Website design</span><i>✦</i><span data-i18n="tick.2">Development</span><i>✦</i><span data-i18n="tick.3">Bilingual websites</span><i>✦</i><span data-i18n="tick.4">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="tick.5">Search engine optimisation</span><i>✦</i><span data-i18n="tick.6">Hosting and maintenance</span><i>✦</i></div><div class="ticker-set"><span data-i18n="tick.1">Website design</span><i>✦</i><span data-i18n="tick.2">Development</span><i>✦</i><span data-i18n="tick.3">Bilingual websites</span><i>✦</i><span data-i18n="tick.4">Bookings, enquiries and orders</span><i>✦</i><span data-i18n="tick.5">Search engine optimisation</span><i>✦</i><span data-i18n="tick.6">Hosting and maintenance</span><i>✦</i></div></div>
       </div>
     </section>
 

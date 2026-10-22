@@ -819,8 +819,8 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 
 /* Reading progress along the top edge */
 .scroll-progress {
-  position: fixed; inset: 0 0 auto; z-index: 101; height: 2px; pointer-events: none;
-  background: linear-gradient(90deg, #2A9FC0, var(--accent));
+  position: fixed; inset: 0 0 auto; z-index: 101; height: 3px; pointer-events: none;
+  background: linear-gradient(90deg, #4CC9E0, #8B5CF6 55%, #F472B6);
   transform: scaleX(var(--progress, 0)); transform-origin: 0 50%;
 }
 @supports (animation-timeline: scroll()) {
@@ -829,6 +829,42 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 }
 
 /* Hover lifts only where there is a mouse; touch screens get a quick press instead */
+/* ---------- Scroll motion ("aurora flow", driven by js/motion.js) ---------- */
+/* Fixed colour field behind the page; motion.js tweens each blob's --c per section */
+.aurora { display: none; position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.motion .aurora { display: block; }
+.aurora-field { position: absolute; inset: -25vmax; }
+.aur { position: absolute; width: 62vmax; height: 62vmax; border-radius: 50%; opacity: .32; background: radial-gradient(closest-side, var(--c), transparent); will-change: transform; }
+.a1 { --c: #4CC9E0; left: 48%; top: 8%; }
+.a2 { --c: #3B82F6; left: 4%; top: 34%; }
+.a3 { --c: #8B5CF6; left: 34%; top: 50%; opacity: .26; }
+/* Fine grain over the colour so it reads as light, not flat gradients */
+.aurora::after {
+  content: ""; position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Let the colour show through the darker bands */
+.motion .hero-bg { display: none; }
+.motion .section-alt { background: rgba(15, 19, 24, .35); }
+.motion .site-footer { background: rgba(15, 19, 24, .7); }
+.motion .hero-visual, .motion .ticker-track { animation: none; }
+
+/* Smooth scrolling (Lenis) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Heading words rise out of a mask */
+.motion .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.motion .wi { display: inline-block; will-change: transform; }
+
+/* Process: coloured line drawn along the top of each step */
+.motion .step::before {
+  left: 0; right: 0; width: auto; border-radius: 2px;
+  background: linear-gradient(90deg, #4CC9E0, #8B5CF6, #F472B6);
+  transform: scaleX(var(--draw, 0)); transform-origin: 0 50%;
+}
+
 @media (hover: hover) {
   .btn:hover .ico { transform: translateX(3px); }
   .project-media:hover .project-thumb { transform: translate3d(0, -4px, 0); border-color: rgba(76, 201, 224, .35); }
