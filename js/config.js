@@ -13,6 +13,7 @@ window.SITE = {
   // Live demo sites
   demoOlive: "https://akwebdev.com/olive-and-oat/",
   demoForge: "https://akwebdev.com/forge-athletic/",
+  demoBarber: "https://akwebdev.com/brass-and-blade/",
 
   // Your Google Business Profile review link ("Ask for reviews" on the profile).
   // Leave empty to hide the "Or review me on Google" link.

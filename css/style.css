@@ -226,7 +226,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .hero-facts li { display: inline-flex; align-items: center; gap: 8px; }
 .hero-facts .ico { color: var(--accent); }
 
-/* 3D showcase of the two demos (JS tilts it with the pointer through --rx/--ry) */
+/* 3D showcase of the three demos (JS tilts it with the pointer through --rx/--ry) */
 .hero-visual { position: relative; perspective: 1400px; }
 .stage {
   position: relative; aspect-ratio: 1 / .86;
@@ -239,9 +239,13 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px;
   border: 1px solid var(--line-2); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .85);
 }
-.card-back { width: 80%; top: 2%; right: 0; transform: translateZ(-60px) rotate(5deg); }
-.card-back img { filter: brightness(.82) saturate(.9); }
-.card-front { width: 88%; left: 0; bottom: 6%; transform: translateZ(50px) rotate(-3deg); }
+/* each card's resting depth and tilt live in --z/--r, so one entrance keyframe serves all three */
+.card { transform: translateZ(var(--z)) rotate(var(--r)); }
+.card-back { --z: -80px; --r: 6deg; --fx: 40px; --fy: -30px; width: 68%; top: 0; right: 0; }
+.card-back img { filter: brightness(.78) saturate(.9); }
+.card-mid { --z: -15px; --r: -4deg; --fx: -40px; --fy: 10px; width: 70%; left: 0; top: 21%; }
+.card-mid img { filter: brightness(.9); }
+.card-front { --z: 55px; --r: 2deg; --fx: 30px; --fy: 60px; width: 70%; right: 5%; bottom: 0; }
 .float-chip {
   position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px;
   padding: 9px 14px; border-radius: 10px; white-space: nowrap;
@@ -254,7 +258,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .float-chip .ico { color: var(--accent); }
 .chip-1 { top: 4%; left: 2%; }
 .chip-2 { right: -2%; top: 52%; letter-spacing: .06em; }
-.chip-3 { left: 30%; bottom: -1%; }
+.chip-3 { left: 0; bottom: 8%; }
 
 /* Services ticker along the bottom edge: a teaser for what's further down */
 .ticker {
@@ -789,12 +793,12 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .js .hero-copy > *:nth-child(3) { animation-delay: .12s; }
 .js .hero-copy > *:nth-child(4) { animation-delay: .18s; }
 .js .hero-copy > *:nth-child(5) { animation-delay: .24s; }
-.js .card-front { opacity: 0; animation: card-in .9s .2s var(--ease-out) forwards; }
-.js .card-back { opacity: 0; animation: card-in-back .9s .05s var(--ease-out) forwards; }
+.js .card { opacity: 0; animation: card-in .9s .05s var(--ease-out) forwards; }
+.js .card-mid { animation-delay: .15s; }
+.js .card-front { animation-delay: .25s; }
 .js .float-chip { opacity: 0; animation: chip-in .5s var(--ease-out) forwards; }
 .js .chip-1 { animation-delay: .7s; } .js .chip-2 { animation-delay: .85s; } .js .chip-3 { animation-delay: 1s; }
-@keyframes card-in { from { opacity: 0; transform: translate3d(-30px, 60px, 50px) rotate(-9deg); } to { opacity: 1; transform: translateZ(50px) rotate(-3deg); } }
-@keyframes card-in-back { from { opacity: 0; transform: translate3d(40px, -30px, -60px) rotate(11deg); } to { opacity: 1; transform: translateZ(-60px) rotate(5deg); } }
+@keyframes card-in { from { opacity: 0; transform: translate3d(var(--fx), var(--fy), var(--z)) rotate(calc(var(--r) * 2.5)); } to { opacity: 1; transform: translateZ(var(--z)) rotate(var(--r)); } }
 @keyframes chip-in { from { opacity: 0; transform: translate3d(0, 12px, 90px) scale(.9); } to { opacity: 1; transform: translateZ(90px); } }
 /* gentle bob after the entrance (on the wrapper, so it never fights the tilt) */
 .hero-visual { animation: bob 7s 1.4s ease-in-out infinite; }

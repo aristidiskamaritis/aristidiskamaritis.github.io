@@ -87,8 +87,8 @@
   // The headline's <span class="rotator"> cycles through these (setLang rewrites the
   // headline, so the span is looked up again on every tick)
   var ROTATE = {
-    en: ["café", "gym", "clinic", "restaurant", "salon", "shop"],
-    el: ["καφέ", "γυμναστήριο", "ιατρείο", "εστιατόριο", "κομμωτήριο", "κατάστημα"]
+    en: ["café", "gym", "barbershop", "clinic", "restaurant", "salon", "shop"],
+    el: ["καφέ", "γυμναστήριο", "κουρείο", "ιατρείο", "εστιατόριο", "κομμωτήριο", "κατάστημα"]
   };
   var rotateIndex = 0;
   // Off-screen copy of the headline styles, used to measure the next word's width
